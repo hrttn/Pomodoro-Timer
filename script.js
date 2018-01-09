@@ -1,6 +1,8 @@
 let countdown;
 
-const buttons = document.querySelectorAll('[data-time]');
+const startButtons = document.querySelectorAll('[data-time]');
+const stopButton = document.querySelector('.js-stop-button');
+
 const timerDisplay = document.querySelector( '.js-timer' );
 
 function timer( seconds, mode ) {
@@ -33,7 +35,7 @@ function displayTimeLeft( seconds, mode ) {
 
     timerDisplay.textContent = display;
 
-    document.title = `${minutesLeft}:${secondsLeft} | ${mode}`;
+    document.title = `${display} | ${mode}`;
 }
 
 function startTimer() {
@@ -43,4 +45,17 @@ function startTimer() {
     timer(seconds, mode);
 };
 
-buttons.forEach( button => button.addEventListener( 'click', startTimer ));
+function stopTimer() {
+    clearInterval(countdown);
+    timerDisplay.textContent = '25:00';
+
+    document.title = 'Pomodoro Timer';
+}
+
+startButtons.forEach( button => button.addEventListener( 'click', startTimer ));
+stopButton.addEventListener( 'click', stopTimer );
+
+
+//To do: Desktop notifications
+//To do: localstorage
+//to do: background based on current mode
