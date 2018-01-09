@@ -50,9 +50,10 @@
     <main id="main">
       <h1 class="timer__title js-timer">25:00</h1>
       <div class="timer__buttons">
-        <button class="timer__pomodoro-button js-pomodoro-button">Pomodoro</button>
-        <button class="timer__short-button js-pomodoro-button">Short Break</button>
-        <button class="timer__long-button js-pomodoro-button">Long Break</button>
+        <button data-time="1500" data-mode="Pomodoro" class="timer__pomodoro-button js-pomodoro-button">Pomodoro (25:00)</button>
+        <button data-time="900" data-mode="Short Break" class="timer__short-button js-short-button">Short Break (5:00)</button>
+        <button data-time="300" data-mode="Long Break" class="timer__long-button js-long-button">Long Break (15:00)</button>
+        <button class="timer__stop-button js-stop-button">Stop</button>
       </div>
       <div class="log">
       </div>
