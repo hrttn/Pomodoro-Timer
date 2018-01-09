@@ -1,0 +1,80 @@
+
+<!Doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+    <style>
+
+        body {
+            color: #454545;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 5rem auto;
+            max-width: 50rem;
+            padding: 0 2rem;
+            font-family: "raleway-regular", Helvetica, Arial, sans-serif;
+        }
+        
+        h1,h2,h3 {
+            line-height:2.4rem;
+            font-family: "lato", Helvetica, Arial, sans-serif;
+        }
+        
+        a { color: #829365; }
+        a:hover{ color: #107896; }
+        a:visited { color: #C2571A; }
+        
+        #lang{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    </style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-45564938-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <main id="main">
+      <h1 class="timer__title js-timer">25:00</h1>
+      <div class="timer__buttons">
+        <button class="timer__pomodoro-button js-pomodoro-button">Pomodoro</button>
+        <button class="timer__short-button js-pomodoro-button">Short Break</button>
+        <button class="timer__long-button js-pomodoro-button">Long Break</button>
+      </div>
+      <div class="log">
+      </div>
+      </main>
+      <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Hugo Rettien",
+            "url": "https://www.hugorettien.com"
+        }
+ 
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            "name": "Hugo Rettien",
+            "givenName": "Hugo",
+            "FamilyName": "Rettien",
+            "image": "https://www.hugorettien.com/img/hugo-rettien.jpg",
+            "url": "https://www.hugorettien.com"
+        }
+      </script>
+      <script src="./script.js"></script>
+  </body>
+</html>
