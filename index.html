@@ -21,7 +21,7 @@
             font-family: "raleway-regular", Helvetica, Arial, sans-serif;
         }
         
-        h1,h2,h3 {
+        h2,h3 {
             line-height:2.4rem;
             font-family: "lato", Helvetica, Arial, sans-serif;
         }
@@ -30,11 +30,80 @@
         a:hover{ color: #107896; }
         a:visited { color: #C2571A; }
         
-        #lang{
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+        .timer__title {
+          text-align: center;
+          font-size: 10rem;
+          font-family: monospace;
         }
+
+        .timer__buttons {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+        }
+
+        .timer__button {
+          width: 11rem;
+          margin: .5rem;
+          padding: .5rem;
+          color: white;    
+          border-radius: 5px;
+          border: none;
+          font-weight: bold;
+        }
+
+        .button__pomodoro {
+          background-color: #F44336;
+          box-shadow: 0px 5px 0px 0px #B71C1C;
+        }
+
+        .button__short {
+          background-color: #2196F3;
+          box-shadow: 0px 5px 0px 0px #0D47A1;
+        }
+
+        .button__long {
+          background-color: #4CAF50;
+          box-shadow: 0px 5px 0px 0px #1B5E20;
+        }
+
+        .button__stop {
+          background-color: #FFEB3B;
+          box-shadow: 0px 5px 0px 0px #F57F17;
+        }
+        
+        .mode__pomodoro {
+          background-color: #FFCDD2;
+        }
+
+        .mode__pomodoro .timer__title {
+          color: #B71C1C;
+        }
+        
+        .mode__short {
+          background-color: #BBDEFB;
+        }
+
+        .mode__short .timer__title {
+          color: #0D47A1;
+        }
+        
+        .mode__long {
+          background-color: #C8E6C9;
+        }
+
+        .mode__long .timer__title {
+          color: #B71C1C;
+        }
+
+        .mode__stop {
+          background-color: #FFF9C4;
+        }
+
+        .mode__stop .timer__title {
+          color: #F57F17;
+        }
+
     </style>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -50,10 +119,10 @@
     <main id="main">
       <h1 class="timer__title js-timer">25:00</h1>
       <div class="timer__buttons">
-        <button data-time="1500" data-mode="Pomodoro" class="timer__pomodoro-button js-pomodoro-button">Pomodoro (25:00)</button>
-        <button data-time="900" data-mode="Short Break" class="timer__short-button js-short-button">Short Break (5:00)</button>
-        <button data-time="300" data-mode="Long Break" class="timer__long-button js-long-button">Long Break (15:00)</button>
-        <button class="timer__stop-button js-stop-button">Stop</button>
+        <button data-time="1500" data-mode="Pomodoro 🍅" class="timer__button button__pomodoro">🍅 Pomodoro (25:00)</button>
+        <button data-time="900" data-mode="Short Break ☕" class="timer__button button__short">☕ Short Break (5:00)</button>
+        <button data-time="300" data-mode="Long Break 🚶" class="timer__button button__long">🚶 Long Break (15:00)</button>
+        <button class="timer__button button__stop js-stop-button">🛑 Stop</button>
       </div>
       <div class="log">
       </div>
