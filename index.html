@@ -13,14 +13,19 @@
 
         body {
             color: #454545;
+            background-color: #f1f1f1;
             font-size: 1.1rem;
-            line-height: 1.6;
-            margin: 5rem auto;
-            max-width: 50rem;
-            padding: 0 2rem;
+            line-height: 1.5;
             font-family: "raleway-regular", Helvetica, Arial, sans-serif;
+            border-top: 7px solid #F44335;
         }
-        
+
+        main#main {
+          max-width: 50rem;
+          margin: auto;
+          padding: 2rem;
+        }
+
         h2,h3 {
             line-height:2.4rem;
             font-family: "lato", Helvetica, Arial, sans-serif;
@@ -30,10 +35,26 @@
         a:hover{ color: #107896; }
         a:visited { color: #C2571A; }
         
+        .timer {
+          background-color: white;
+          width: 500px;
+          margin: 0 auto 2rem;
+          border-radius: .5rem;
+          box-shadow: 0 2px 3px 0 rgba(0,0,0,.075);
+        }
+
         .timer__title {
           text-align: center;
           font-size: 10rem;
           font-family: monospace;
+          margin: 1rem;
+        }
+
+        .timer__progress {
+          background: #F44335;
+          height: 5px;
+          border-bottom-left-radius: 0.5rem;
+          width: 0%;
         }
 
         .timer__buttons {
@@ -50,6 +71,13 @@
           border-radius: 5px;
           border: none;
           font-weight: bold;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2)
+        }
+
+        .timer__button:hover {
+          transform: translateY(5px);
+          box-shadow: none;
+          filter: brightness(70%);
         }
 
         .button__pomodoro {
@@ -72,35 +100,39 @@
           box-shadow: 0px 5px 0px 0px #F57F17;
         }
         
-        .mode__pomodoro {
+        .button__time {
+          font-size: .95rem;
+        }
+
+        .background--pomodoro {
           background-color: #FFCDD2;
         }
 
-        .mode__pomodoro .timer__title {
+        .background--pomodoro .timer__title {
           color: #B71C1C;
         }
         
-        .mode__short {
+        .background--short {
           background-color: #BBDEFB;
         }
 
-        .mode__short .timer__title {
+        .background--short .timer__title {
           color: #0D47A1;
         }
         
-        .mode__long {
+        .background--long {
           background-color: #C8E6C9;
         }
 
-        .mode__long .timer__title {
+        .background--long .timer__title {
           color: #1B5E20;
         }
 
-        .mode__stop {
+        .background--stop {
           background-color: #FFF9C4;
         }
 
-        .mode__stop .timer__title {
+        .background--stop .timer__title {
           color: #F57F17;
         }
 
@@ -117,12 +149,15 @@
   </head>
   <body>
     <main id="main">
-      <h1 class="timer__title js-timer">25:00</h1>
+      <div class="timer">
+        <h1 class="timer__title js-timer">25:00</h1>
+        <div class="timer__progress"></div>
+      </div>
       <div class="timer__buttons">
-        <button data-time="1500" data-mode="Pomodoro 🍅" class="timer__button button__pomodoro">🍅 Pomodoro (25:00)</button>
-        <button data-time="900" data-mode="Short Break ☕" class="timer__button button__short">☕ Short Break (5:00)</button>
-        <button data-time="300" data-mode="Long Break 🚶" class="timer__button button__long">🚶 Long Break (15:00)</button>
-        <button class="timer__button button__stop js-stop-button">🛑 Stop</button>
+        <button data-time="1500" data-mode="Pomodoro 🍅" class="timer__button button__pomodoro">Pomodoro <span class="button__time">(25:00)</span></button>
+        <button data-time="900" data-mode="Short Break ☕" class="timer__button button__short">Short Break <span class="button__time">(05:00)</span></button>
+        <button data-time="300" data-mode="Long Break 🚶" class="timer__button button__long">Long Break <span class="button__time">(15:00)</span></button>
+        <button class="timer__button button__stop js-stop-button">Stop</button>
       </div>
       <div class="log">
       </div>
