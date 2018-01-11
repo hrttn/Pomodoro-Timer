@@ -51,7 +51,7 @@
         }
 
         .timer__progress {
-          background: #F44335;
+          background-color: #F44335;
           height: 5px;
           border-bottom-left-radius: 0.5rem;
           width: 0%;
@@ -103,39 +103,6 @@
         .button__time {
           font-size: .95rem;
         }
-
-        .background--pomodoro {
-          background-color: #FFCDD2;
-        }
-
-        .background--pomodoro .timer__title {
-          color: #B71C1C;
-        }
-        
-        .background--short {
-          background-color: #BBDEFB;
-        }
-
-        .background--short .timer__title {
-          color: #0D47A1;
-        }
-        
-        .background--long {
-          background-color: #C8E6C9;
-        }
-
-        .background--long .timer__title {
-          color: #1B5E20;
-        }
-
-        .background--stop {
-          background-color: #FFF9C4;
-        }
-
-        .background--stop .timer__title {
-          color: #F57F17;
-        }
-
     </style>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -154,9 +121,9 @@
         <div class="timer__progress"></div>
       </div>
       <div class="timer__buttons">
-        <button data-time="1500" data-mode="Pomodoro 🍅" class="timer__button button__pomodoro">Pomodoro <span class="button__time">(25:00)</span></button>
-        <button data-time="900" data-mode="Short Break ☕" class="timer__button button__short">Short Break <span class="button__time">(05:00)</span></button>
-        <button data-time="300" data-mode="Long Break 🚶" class="timer__button button__long">Long Break <span class="button__time">(15:00)</span></button>
+        <button data-time="1500" data-mode="Pomodoro" class="timer__button button__pomodoro">Pomodoro <span class="button__time">(25:00)</span></button>
+        <button data-time="300" data-mode="Short Break" class="timer__button button__short">Short Break <span class="button__time">(05:00)</span></button>
+        <button data-time="900" data-mode="Long Break" class="timer__button button__long">Long Break <span class="button__time">(15:00)</span></button>
         <button class="timer__button button__stop js-stop-button">Stop</button>
       </div>
       <div class="log">
