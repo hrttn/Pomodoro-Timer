@@ -4,6 +4,7 @@ const progressBar = document.querySelector( '.timer__progress ');
 const startButtons = document.querySelectorAll('[data-time]');
 const stopButton = document.querySelector('.js-stop-button');
 const body = document.querySelector('body');
+const gong = document.querySelector('.gong');
 
 const timerDisplay = document.querySelector( '.js-timer' );
 
@@ -19,6 +20,8 @@ function timer( seconds, mode ) {
         
         if( secondsLeft < 0 ) {
             clearInterval(countdown);
+            notifyUser( mode );
+            gong.play();
             return;
         }
 
@@ -98,10 +101,27 @@ function stopTimer() {
     changeColor();
 }
 
+function notifyUser( mode ) {
+    if (!Notification) {
+        console.error('Desktop notifications not available in your browser. Try Chrome, Firefox or Safari.');
+        return;
+    }
+    if (Notification.permission !== "granted") 
+        Notification.requestPermission();
+    else {
+        let notification = new Notification( mode, {
+            body: "Your time is up!!",
+        });
+
+        setTimeout(notification.close.bind(notification), 6000);
+        notification.onclick = function () {
+            window.focus();
+        };
+    };
+}
+
 startButtons.forEach( button => button.addEventListener( 'click', startTimer ));
 stopButton.addEventListener( 'click', stopTimer );
 
 
-//To do: Desktop notifications
 //To do: localstorage
-//to do: add sound
