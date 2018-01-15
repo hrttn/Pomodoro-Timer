@@ -3,10 +3,14 @@ let countdown;
 const progressBar = document.querySelector( '.timer__progress ');
 const startButtons = document.querySelectorAll('[data-time]');
 const stopButton = document.querySelector('.js-stop-button');
+
 const body = document.querySelector('body');
 const gong = document.querySelector('.gong');
-
 const timerDisplay = document.querySelector( '.js-timer' );
+
+const pomodoroLog = JSON.parse(localStorage.getItem('logs')) || {};
+const logList = document.querySelector('.log');
+
 
 function timer( seconds, mode ) {
     clearInterval(countdown);
@@ -22,6 +26,11 @@ function timer( seconds, mode ) {
             clearInterval(countdown);
             notifyUser( mode );
             gong.play();
+            
+            if( mode === 'Pomodoro' ) {
+                logPomodoro( now );
+            }
+               
             return;
         }
 
@@ -83,6 +92,47 @@ function changeColor( modifier = 'pomodoro' ) {
     progressBar.style.backgroundColor = backgroundColor;
 }
 
+
+function logPomodoro( startTime ) {
+    const dateTime = new Date( startTime );
+    const localDate = dateTime.toDateString();
+    const localTime = dateTime.toLocaleTimeString();
+
+    if( !pomodoroLog[localDate] ) {
+        pomodoroLog[localDate] = [];
+    }
+
+    pomodoroLog[localDate].push( localTime );
+
+    localStorage.setItem( 'logs', JSON.stringify(pomodoroLog) );
+    populateLog( pomodoroLog, logList );
+}
+
+
+function populateLog( logs = {}, logList) {
+    if ( Object.keys(logs).length === 0 && logs.constructor === Object
+) return;
+
+    logList.innerHTML = '<h2>Log</h2>';
+    const daysAndHours = [];
+
+    Object.keys(logs).forEach(day => {
+        let currentDay = `<h3>${day} (${logs[day].length})</h3>`;
+        //logList.innerHTML += `<h3>${day}</h3>`;
+        let hours = logs[day].map( (hour) => {
+            return `
+                <li class="log__entry">${hour}</li>
+                `;
+         }).join('');
+
+        let hoursList =  `<ol class="log__entries">${hours}</ol>`;
+        //logList.innerHTML += `<ol>${hours}</ol>`;
+        let dayAndHour = currentDay + hoursList;
+        daysAndHours.unshift(dayAndHour);
+    });
+    logList.innerHTML += daysAndHours.join('');
+}
+
 function startTimer() {
     const seconds = parseInt(this.dataset.time);
     const mode = this.dataset.mode;
@@ -123,5 +173,7 @@ function notifyUser( mode ) {
 startButtons.forEach( button => button.addEventListener( 'click', startTimer ));
 stopButton.addEventListener( 'click', stopTimer );
 
+populateLog( pomodoroLog, logList);
 
 //To do: localstorage
+//To do: keyboard shortcuts
